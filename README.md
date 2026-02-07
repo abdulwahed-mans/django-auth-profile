@@ -15,7 +15,7 @@ Built with clean architecture, premium UI, and production-ready patterns.
 
 <br>
 
-[Features](#-features) · [Quick Start](#-quick-start) · [API](#-api-endpoints) · [Screenshots](#-screenshots) · [Tech Stack](#-tech-stack) · [Contributing](#-contributing)
+[Features](#-features) · [Quick Start](#-quick-start) · [API](#-api-endpoints) · [API Docs](#-api-documentation) · [Tech Stack](#-tech-stack) · [Contributing](#-contributing)
 
 </div>
 
@@ -96,24 +96,6 @@ Open **http://127.0.0.1:8000** and you're live.
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-| Home | Login | Dashboard |
-|:--:|:--:|:--:|
-| ![Home](https://via.placeholder.com/350x200/111318/4f6af0?text=Home+Page) | ![Login](https://via.placeholder.com/350x200/111318/4f6af0?text=Login+Page) | ![Dashboard](https://via.placeholder.com/350x200/111318/4f6af0?text=Dashboard) |
-
-| Profile | API | Admin |
-|:--:|:--:|:--:|
-| ![Profile](https://via.placeholder.com/350x200/111318/4f6af0?text=Edit+Profile) | ![API](https://via.placeholder.com/350x200/111318/4f6af0?text=Browsable+API) | ![Admin](https://via.placeholder.com/350x200/111318/4f6af0?text=Admin+Panel) |
-
-</div>
-
-> **Note:** Replace placeholders with actual screenshots by running the project locally.
-
----
-
 ## 🌐 API Endpoints
 
 All endpoints require authentication (session or token).
@@ -139,6 +121,19 @@ curl -H "Authorization: Token YOUR_TOKEN" http://127.0.0.1:8000/api/profiles/
 ```
 
 Visit **/api/** for the interactive browsable API.
+
+---
+
+## 📖 API Documentation
+
+Interactive API documentation powered by [drf-spectacular](https://drf-spectacular.readthedocs.io/):
+
+| URL | Interface | Description |
+|:--|:--|:--|
+| `/api/docs/` | **Swagger UI** | Interactive API explorer — try endpoints live |
+| `/api/redoc/` | **ReDoc** | Clean, readable API reference with search |
+| `/api/schema/` | **OpenAPI Schema** | Raw OpenAPI 3.0 JSON — import into Postman, Insomnia, etc. |
+| `/api-docs/` | **API Docs Page** | Styled overview page with all endpoints and auth info |
 
 ---
 
@@ -171,6 +166,10 @@ The `seed_users` command creates these demo accounts:
 | `/password-change/` | Change password | Yes |
 | `/password-reset/` | Forgot password | No |
 | `/api/` | Browsable API root | Yes |
+| `/api/docs/` | Swagger UI | No |
+| `/api/redoc/` | ReDoc | No |
+| `/api/schema/` | OpenAPI schema | No |
+| `/api-docs/` | API documentation page | No |
 | `/admin/` | Admin panel | Staff |
 
 ---
@@ -182,6 +181,7 @@ The `seed_users` command creates these demo accounts:
 | **Language** | Python | 3.14 |
 | **Framework** | Django | 5.2 |
 | **API** | Django REST Framework | 3.16 |
+| **API Docs** | drf-spectacular | 0.29 |
 | **Frontend** | Bootstrap 5 | 5.3 |
 | **Icons** | Bootstrap Icons | 1.11 |
 | **Fonts** | Inter + Plus Jakarta Sans | Google Fonts |
@@ -223,6 +223,7 @@ django-auth-profile/
 │       ├── profile.html         # Edit profile
 │       ├── about.html           # About page
 │       ├── help.html            # Help center
+│       ├── api_docs.html        # API documentation page
 │       ├── password_change.html
 │       ├── password_change_done.html
 │       ├── password_reset.html

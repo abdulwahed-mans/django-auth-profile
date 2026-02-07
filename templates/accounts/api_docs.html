@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}API Documentation — AuthProfile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <div class="mb-5 text-center">
+            <div class="page-icon accent">
+                <i class="bi bi-journal-code"></i>
+            </div>
+            <h1>API Documentation</h1>
+            <p class="text-sec">Interactive documentation for the AuthProfile REST API.</p>
+        </div>
+
+        <!-- Doc Links -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <a href="/api/docs/" class="card-custom text-center d-block" style="text-decoration:none;">
+                    <div class="card-body">
+                        <div class="feature-icon accent mx-auto mb-3">
+                            <i class="bi bi-braces-asterisk"></i>
+                        </div>
+                        <h5 style="font-size:1.0625rem; margin-bottom:0.375rem;">Swagger UI</h5>
+                        <p style="color:var(--color-text-sec); font-size:0.8125rem; margin:0;">Interactive API explorer — try endpoints live in your browser.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/api/redoc/" class="card-custom text-center d-block" style="text-decoration:none;">
+                    <div class="card-body">
+                        <div class="feature-icon success mx-auto mb-3">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h5 style="font-size:1.0625rem; margin-bottom:0.375rem;">ReDoc</h5>
+                        <p style="color:var(--color-text-sec); font-size:0.8125rem; margin:0;">Clean, readable API reference with search and navigation.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/api/schema/" class="card-custom text-center d-block" style="text-decoration:none;">
+                    <div class="card-body">
+                        <div class="feature-icon warning mx-auto mb-3">
+                            <i class="bi bi-filetype-json"></i>
+                        </div>
+                        <h5 style="font-size:1.0625rem; margin-bottom:0.375rem;">OpenAPI Schema</h5>
+                        <p style="color:var(--color-text-sec); font-size:0.8125rem; margin:0;">Raw OpenAPI 3.0 schema — import into Postman, Insomnia, etc.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Endpoints Reference -->
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-link-45deg"></i> Endpoints</h5>
+                    <span class="line"></span>
+                </div>
+
+                <h6 style="font-size:0.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-text-mute); margin-bottom:0.75rem;">
+                    <i class="bi bi-person-badge text-accent"></i> Profiles
+                </h6>
+                <div class="api-table mb-4">
+                    <div class="api-row">
+                        <code>GET /api/profiles/</code>
+                        <span>List all profiles</span>
+                    </div>
+                    <div class="api-row">
+                        <code>POST /api/profiles/</code>
+                        <span>Create a profile</span>
+                    </div>
+                    <div class="api-row">
+                        <code>GET /api/profiles/{id}/</code>
+                        <span>Retrieve a profile</span>
+                    </div>
+                    <div class="api-row">
+                        <code>PUT /api/profiles/{id}/</code>
+                        <span>Update a profile</span>
+                    </div>
+                    <div class="api-row">
+                        <code>PATCH /api/profiles/{id}/</code>
+                        <span>Partial update a profile</span>
+                    </div>
+                    <div class="api-row">
+                        <code>DELETE /api/profiles/{id}/</code>
+                        <span>Delete a profile</span>
+                    </div>
+                </div>
+
+                <h6 style="font-size:0.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--color-text-mute); margin-bottom:0.75rem;">
+                    <i class="bi bi-people text-accent"></i> Users
+                </h6>
+                <div class="api-table">
+                    <div class="api-row">
+                        <code>GET /api/users/</code>
+                        <span>List all users (read-only)</span>
+                    </div>
+                    <div class="api-row">
+                        <code>GET /api/users/{id}/</code>
+                        <span>Retrieve a user (read-only)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Authentication -->
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-key"></i> Authentication</h5>
+                    <span class="line"></span>
+                </div>
+
+                <div class="help-item" style="padding-top:0;">
+                    <h6><i class="bi bi-browser-chrome text-accent"></i> Session Authentication</h6>
+                    <p>Log in via the browser and access <code>/api/</code> directly. The browsable API will use your session cookie.</p>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-shield-lock text-accent"></i> Token Authentication</h6>
+                    <p>Include an <code>Authorization</code> header with your token:</p>
+                    <code class="code-block">curl -H "Authorization: Token YOUR_TOKEN" http://127.0.0.1:8000/api/profiles/</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card-custom no-lift">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-lightning"></i> Quick Links</h5>
+                    <span class="line"></span>
+                </div>
+
+                <a href="/api/" class="quick-link">
+                    <div class="quick-link-icon"><i class="bi bi-braces"></i></div>
+                    <div class="quick-link-text">
+                        <strong>Browsable API</strong>
+                        <small>DRF's built-in interactive API browser</small>
+                    </div>
+                </a>
+
+                <a href="/api/docs/" class="quick-link">
+                    <div class="quick-link-icon"><i class="bi bi-braces-asterisk"></i></div>
+                    <div class="quick-link-text">
+                        <strong>Swagger UI</strong>
+                        <small>Try API calls directly from the documentation</small>
+                    </div>
+                </a>
+
+                <a href="/api/redoc/" class="quick-link">
+                    <div class="quick-link-icon"><i class="bi bi-file-earmark-text"></i></div>
+                    <div class="quick-link-text">
+                        <strong>ReDoc</strong>
+                        <small>Clean, searchable API reference</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

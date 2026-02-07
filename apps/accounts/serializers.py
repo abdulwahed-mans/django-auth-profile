@@ -5,6 +5,12 @@ from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """Serializer for user profiles.
+
+    Returns profile details including bio, location, phone, and avatar URL.
+    The `username` field is read-only and pulled from the related User model.
+    """
+
     username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
@@ -14,6 +20,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Serializer for Django's built-in User model.
+
+    Includes nested profile data (read-only) alongside standard user fields
+    such as username, email, and name.
+    """
+
     profile = ProfileSerializer(read_only=True)
 
     class Meta:

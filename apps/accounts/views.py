@@ -18,6 +18,10 @@ def help_view(request):
     return render(request, 'accounts/help.html')
 
 
+def api_docs_view(request):
+    return render(request, 'accounts/api_docs.html')
+
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)

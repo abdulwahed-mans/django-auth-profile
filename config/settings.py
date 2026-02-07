@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # Third-party
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_spectacular',
     'django_bootstrap5',
     # Local
     'apps.accounts',
@@ -104,5 +105,19 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# drf-spectacular
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'AuthProfile API',
+    'DESCRIPTION': 'REST API for user profiles and authentication. Supports full CRUD on profiles and read-only access to users.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SCHEMA_PATH_PREFIX': '/api/',
+    'TAGS': [
+        {'name': 'Profiles', 'description': 'Full CRUD operations on user profiles'},
+        {'name': 'Users', 'description': 'Read-only access to registered users'},
     ],
 }

@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('about/', views.about_view, name='about'),
     path('help/', views.help_view, name='help'),
+    path('api-docs/', views.api_docs_view, name='api_docs'),
     path('dashboard/', views.dashboard_view, name='dashboard'),
     path('register/', views.register_view, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
