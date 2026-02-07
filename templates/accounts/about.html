@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}About — AuthProfile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="mb-5 text-center">
+            <div class="page-icon accent">
+                <i class="bi bi-info-circle"></i>
+            </div>
+            <h1>About AuthProfile</h1>
+            <p class="text-sec">A modern Django starter for authentication and user profiles.</p>
+        </div>
+
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-lightning"></i> What is this?</h5>
+                    <span class="line"></span>
+                </div>
+                <p>
+                    AuthProfile is a ready-to-use Django project that provides user registration,
+                    login/logout, editable user profiles, and a full REST API. It's designed as a
+                    clean starting point for any project that needs user management.
+                </p>
+                <p class="mb-0">
+                    The project follows Django best practices with a separate config directory,
+                    organized apps folder, and clean separation of concerns between views,
+                    serializers, and templates.
+                </p>
+            </div>
+        </div>
+
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-stack"></i> Tech Stack</h5>
+                    <span class="line"></span>
+                </div>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-filetype-py"></i></span>
+                            <span class="detail-label">Backend</span>
+                            <span class="detail-value">Django 5.2</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-braces"></i></span>
+                            <span class="detail-label">API</span>
+                            <span class="detail-value">DRF 3.16</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-database"></i></span>
+                            <span class="detail-label">Database</span>
+                            <span class="detail-value">SQLite</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-bootstrap"></i></span>
+                            <span class="detail-label">Frontend</span>
+                            <span class="detail-value">Bootstrap 5</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-fonts"></i></span>
+                            <span class="detail-label">Fonts</span>
+                            <span class="detail-value">Inter, Jakarta Sans</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-icon"><i class="bi bi-key"></i></span>
+                            <span class="detail-label">Auth</span>
+                            <span class="detail-value">Session + Token</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-custom no-lift">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-check2-circle"></i> Features</h5>
+                    <span class="line"></span>
+                </div>
+                <div class="row g-2">
+                    <div class="col-sm-6">
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> User registration</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Login &amp; logout</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Auto-created profiles</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Profile editing</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> REST API with CRUD</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Token authentication</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Browsable API</div>
+                        <div class="feature-check"><i class="bi bi-check-lg text-accent"></i> Admin panel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

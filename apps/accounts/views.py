@@ -6,6 +6,18 @@ from django.contrib import messages
 from .forms import RegisterForm, ProfileForm, UserUpdateForm
 
 
+def home_view(request):
+    return render(request, 'accounts/home.html')
+
+
+def about_view(request):
+    return render(request, 'accounts/about.html')
+
+
+def help_view(request):
+    return render(request, 'accounts/help.html')
+
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)

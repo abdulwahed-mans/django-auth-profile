@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}Help — AuthProfile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="mb-5 text-center">
+            <div class="page-icon warning">
+                <i class="bi bi-question-circle"></i>
+            </div>
+            <h1>Help Center</h1>
+            <p class="text-sec">Answers to common questions about using AuthProfile.</p>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-rocket-takeoff"></i> Getting Started</h5>
+                    <span class="line"></span>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-person-plus text-accent"></i> How do I create an account?</h6>
+                    <p>Click <strong>Register</strong> in the top navigation bar. Fill in your username, name, email, and password, then click "Create account". You'll be logged in automatically.</p>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-box-arrow-in-right text-accent"></i> How do I log in?</h6>
+                    <p>Click <strong>Login</strong> in the navigation bar and enter your username and password. You'll be redirected to your dashboard.</p>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-pencil-square text-accent"></i> How do I edit my profile?</h6>
+                    <p>Go to your <strong>Dashboard</strong> and click "Edit Profile", or click <strong>Profile</strong> in the navigation bar. You can update your name, email, bio, location, and phone number.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API -->
+        <div class="card-custom no-lift mb-4">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-braces"></i> REST API</h5>
+                    <span class="line"></span>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-link-45deg text-accent"></i> API Endpoints</h6>
+                    <div class="api-table">
+                        <div class="api-row">
+                            <code>GET /api/profiles/</code>
+                            <span>List all profiles</span>
+                        </div>
+                        <div class="api-row">
+                            <code>GET /api/profiles/{id}/</code>
+                            <span>Get a single profile</span>
+                        </div>
+                        <div class="api-row">
+                            <code>PUT /api/profiles/{id}/</code>
+                            <span>Update a profile</span>
+                        </div>
+                        <div class="api-row">
+                            <code>DELETE /api/profiles/{id}/</code>
+                            <span>Delete a profile</span>
+                        </div>
+                        <div class="api-row">
+                            <code>GET /api/users/</code>
+                            <span>List all users (read-only)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-key text-accent"></i> Authentication</h6>
+                    <p>The API supports both <strong>session authentication</strong> (when logged in via browser) and <strong>token authentication</strong>. To use token auth, include the header:</p>
+                    <code class="code-block">Authorization: Token your-token-here</code>
+                </div>
+
+                <div class="help-item">
+                    <h6><i class="bi bi-eye text-accent"></i> Browsable API</h6>
+                    <p class="mb-0">Visit <a href="/api/">/api/</a> in your browser to explore the API interactively using DRF's built-in browsable interface.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Accounts -->
+        <div class="card-custom no-lift">
+            <div class="card-body">
+                <div class="section-header">
+                    <h5><i class="bi bi-people"></i> Test Accounts</h5>
+                    <span class="line"></span>
+                </div>
+                <p>The following demo accounts are available for testing:</p>
+
+                <div class="table-responsive">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Location</th>
+                                <th>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>admin</code></td>
+                                <td>—</td>
+                                <td><code>Admin123!</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>erik.lindberg</code></td>
+                                <td>Stockholm</td>
+                                <td><code>SwedishTest123!</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>anna.johansson</code></td>
+                                <td>Gothenburg</td>
+                                <td><code>SwedishTest123!</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>oscar.nilsson</code></td>
+                                <td>Malmö</td>
+                                <td><code>SwedishTest123!</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>sara.eriksson</code></td>
+                                <td>Uppsala</td>
+                                <td><code>SwedishTest123!</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>karl.svensson</code></td>
+                                <td>Linköping</td>
+                                <td><code>SwedishTest123!</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

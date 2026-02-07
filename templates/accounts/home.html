@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}AuthProfile — Secure User Management{% endblock %}
+
+{% block main_class %}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center justify-content-center min-vh-75">
+            <div class="col-lg-7 text-center">
+                <div class="hero-badge">
+                    <i class="bi bi-shield-check"></i> Secure by default
+                </div>
+                <h1 class="hero-title">
+                    User authentication<br>done right.
+                </h1>
+                <p class="hero-subtitle">
+                    A clean Django project with registration, login, user profiles,
+                    and a full REST API — ready to build on.
+                </p>
+                <div class="hero-actions">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'accounts:dashboard' %}" class="btn btn-accent btn-lg">
+                            <i class="bi bi-grid-1x2"></i> Go to Dashboard
+                        </a>
+                        <a href="/api/" class="btn btn-ghost btn-lg">
+                            <i class="bi bi-braces"></i> Explore API
+                        </a>
+                    {% else %}
+                        <a href="{% url 'accounts:register' %}" class="btn btn-accent btn-lg">
+                            <i class="bi bi-person-plus"></i> Get Started
+                        </a>
+                        <a href="{% url 'accounts:login' %}" class="btn btn-ghost btn-lg">
+                            <i class="bi bi-box-arrow-in-right"></i> Sign In
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">What's included</h2>
+            <p class="section-subtitle">Everything you need for user management, out of the box.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card card-custom">
+                    <div class="card-body text-center">
+                        <div class="feature-icon accent">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <h5>Authentication</h5>
+                        <p>Register, login, and logout with Django's built-in auth system. Secure session management included.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card card-custom">
+                    <div class="card-body text-center">
+                        <div class="feature-icon success">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <h5>User Profiles</h5>
+                        <p>Auto-created profiles with bio, location, phone, and avatar. Edit everything from a clean dashboard.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card card-custom">
+                    <div class="card-body text-center">
+                        <div class="feature-icon warning">
+                            <i class="bi bi-braces"></i>
+                        </div>
+                        <h5>REST API</h5>
+                        <p>Full CRUD on profiles, read-only users list, token authentication — powered by Django REST Framework.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="stack-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card-custom no-lift">
+                    <div class="card-body py-4">
+                        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+                            <span class="stack-badge"><i class="bi bi-filetype-py"></i> Django 5.2</span>
+                            <span class="stack-badge"><i class="bi bi-braces"></i> DRF 3.16</span>
+                            <span class="stack-badge"><i class="bi bi-bootstrap"></i> Bootstrap 5</span>
+                            <span class="stack-badge"><i class="bi bi-database"></i> SQLite</span>
+                            <span class="stack-badge"><i class="bi bi-key"></i> Token Auth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

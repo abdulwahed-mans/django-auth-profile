@@ -6,7 +6,10 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('', views.dashboard_view, name='dashboard'),
+    path('', views.home_view, name='home'),
+    path('about/', views.about_view, name='about'),
+    path('help/', views.help_view, name='help'),
+    path('dashboard/', views.dashboard_view, name='dashboard'),
     path('register/', views.register_view, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
