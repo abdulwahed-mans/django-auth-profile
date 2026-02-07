@@ -90,6 +90,8 @@ a:hover {
     border-bottom: 1px solid rgba(255,255,255,0.06);
     padding: 0.75rem 0;
     backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 1050;
 }
 
 .navbar-custom .navbar-brand {
@@ -217,6 +219,7 @@ a:hover {
     min-width: 220px;
     margin-top: 0.5rem !important;
     animation: dropdownFadeIn 0.15s ease;
+    z-index: 1060;
 }
 @keyframes dropdownFadeIn {
     from { opacity: 0; transform: translateY(-4px); }
@@ -832,6 +835,86 @@ textarea.form-control {
     filter: invert(1);
     width: 1.25em;
     height: 1.25em;
+}
+
+/* --- Mobile Navbar --- */
+@media (max-width: 991.98px) {
+    .navbar-custom .navbar-collapse {
+        padding: 0.75rem 0 0.5rem;
+        margin-top: 0.5rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .navbar-custom .navbar-nav {
+        gap: 0.125rem !important;
+    }
+    .navbar-custom .nav-link {
+        padding: 0.625rem 0.75rem;
+        border-radius: var(--radius-sm);
+    }
+    .navbar-custom .nav-divider {
+        display: none !important;
+    }
+
+    /* User dropdown toggle — full width on mobile */
+    .nav-user-toggle {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--radius-sm);
+        margin-top: 0.25rem;
+    }
+
+    /* Dropdown — dark inline style on mobile */
+    .dropdown-custom {
+        position: static !important;
+        transform: none !important;
+        float: none;
+        width: 100%;
+        margin-top: 0.25rem !important;
+        background: var(--color-dark-sec);
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: none;
+        border-radius: var(--radius-sm);
+        animation: none;
+    }
+
+    .dropdown-header-custom {
+        padding: 0.625rem 0.75rem;
+    }
+    .dropdown-user-info strong {
+        color: rgba(255,255,255,0.9);
+    }
+    .dropdown-user-info small {
+        color: rgba(255,255,255,0.45);
+    }
+
+    .dropdown-custom .dropdown-divider {
+        border-color: rgba(255,255,255,0.08);
+    }
+
+    .dropdown-item-custom {
+        color: rgba(255,255,255,0.65);
+        border-radius: var(--radius-sm);
+        padding: 0.5rem 0.75rem;
+    }
+    .dropdown-item-custom:hover {
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+    }
+
+    .dropdown-logout {
+        color: #f87171;
+    }
+    .dropdown-logout:hover {
+        background: rgba(239,68,68,0.1);
+        color: #f87171;
+    }
+
+    /* Register button on mobile */
+    .nav-link-register {
+        margin-top: 0.25rem;
+        text-align: center;
+        justify-content: center;
+    }
 }
 
 /* --- Responsive --- */
