@@ -64,33 +64,66 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:profile' %}">
-                                <i class="bi bi-person"></i> Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/api/">
                                 <i class="bi bi-braces"></i> API
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/">
-                                <i class="bi bi-sliders"></i> Admin
-                            </a>
-                        </li>
                         <li class="d-none d-lg-block nav-divider"></li>
-                        <li class="nav-item">
-                            <span class="nav-user">
-                                <i class="bi bi-person-circle"></i> {{ user.username }}
-                            </span>
-                        </li>
-                        <li class="nav-item">
-                            <form method="post" action="{% url 'accounts:logout' %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn-logout">
-                                    <i class="bi bi-arrow-right-short"></i> Logout
-                                </button>
-                            </form>
+
+                        <!-- User Dropdown -->
+                        <li class="nav-item dropdown">
+                            <button class="nav-user-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="nav-user-avatar">
+                                    {{ user.first_name|first|default:user.username|first|upper }}
+                                </span>
+                                <span class="nav-user-name">{{ user.username }}</span>
+                                <i class="bi bi-chevron-down nav-user-chevron"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-custom">
+                                <li class="dropdown-header-custom">
+                                    <div class="dropdown-user-info">
+                                        <span class="dropdown-avatar">
+                                            {{ user.first_name|first|default:user.username|first|upper }}
+                                        </span>
+                                        <div>
+                                            <strong>{{ user.get_full_name|default:user.username }}</strong>
+                                            <small>{{ user.email|default:"No email" }}</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item-custom" href="{% url 'accounts:dashboard' %}">
+                                        <i class="bi bi-grid-1x2"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item-custom" href="{% url 'accounts:profile' %}">
+                                        <i class="bi bi-person"></i> Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item-custom" href="{% url 'accounts:password_change' %}">
+                                        <i class="bi bi-key"></i> Change Password
+                                    </a>
+                                </li>
+                                {% if user.is_staff %}
+                                <li>
+                                    <a class="dropdown-item-custom" href="/admin/">
+                                        <i class="bi bi-sliders"></i> Admin Panel
+                                    </a>
+                                </li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form method="post" action="{% url 'accounts:logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="dropdown-item-custom dropdown-logout">
+                                            <i class="bi bi-box-arrow-right"></i> Sign out
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -99,7 +132,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}">
+                            <a class="nav-link nav-link-register" href="{% url 'accounts:register' %}">
                                 <i class="bi bi-person-plus"></i> Register
                             </a>
                         </li>
