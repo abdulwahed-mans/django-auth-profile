@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import RegisterForm, ProfileForm, UserUpdateForm
+from .models import Profile
+from .ratelimit import ratelimit
 
 
 def home_view(request):
@@ -22,6 +24,7 @@ def api_docs_view(request):
     return render(request, 'accounts/api_docs.html')
 
 
+@ratelimit('register')
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -42,9 +45,11 @@ def dashboard_view(request):
 
 @login_required
 def profile_view(request):
+    profile, _ = Profile.objects.get_or_create(user=request.user)
+
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        profile_form = ProfileForm(request.POST, instance=profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -52,7 +57,7 @@ def profile_view(request):
             return redirect('accounts:profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
+        profile_form = ProfileForm(instance=profile)
 
     context = {
         'user_form': user_form,

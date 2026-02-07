@@ -5,10 +5,10 @@
 
 {% block content %}
 <div class="auth-wrapper">
-    <div class="auth-card card-custom no-lift" style="max-width: 480px;">
+    <div class="auth-card auth-card-wide card-custom no-lift">
         <div class="card-body">
             <div class="auth-logo">
-                <i class="bi bi-person-plus-fill"></i>
+                <i class="bi bi-person-plus-fill" aria-hidden="true"></i>
             </div>
             <h2 class="auth-title">Create account</h2>
             <p class="auth-subtitle">Fill in your details to get started</p>
@@ -18,7 +18,7 @@
                 {% bootstrap_form form %}
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-accent">
-                        <i class="bi bi-check-lg"></i> Create account
+                        <i class="bi bi-check-lg" aria-hidden="true"></i> Create account
                     </button>
                 </div>
             </form>

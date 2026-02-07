@@ -1,9 +1,10 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, filters
 from django.contrib.auth.models import User
 from drf_spectacular.utils import extend_schema, extend_schema_view
 
 from .models import Profile
-from .serializers import ProfileSerializer, UserSerializer
+from .permissions import IsOwnerOrReadOnly
+from .serializers import ProfileSerializer, UserSerializer, UserPublicSerializer
 
 
 @extend_schema_view(
@@ -19,11 +20,16 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     Provides full CRUD operations on Profile objects.
     All endpoints require authentication (session or token).
+    Write operations are restricted to the profile owner.
     """
 
     queryset = Profile.objects.select_related('user').all()
     serializer_class = ProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['user__username', 'location', 'bio']
+    ordering_fields = ['created_at', 'updated_at']
+    ordering = ['-created_at']
 
 
 @extend_schema_view(
@@ -36,8 +42,17 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     Provides list and detail views for registered users.
     Each user includes nested profile data.
     All endpoints require authentication.
+    Admin users see email addresses; regular users do not.
     """
 
     queryset = User.objects.select_related('profile').all()
-    serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['username', 'first_name', 'last_name']
+    ordering_fields = ['date_joined', 'username']
+    ordering = ['-date_joined']
+
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return UserSerializer
+        return UserPublicSerializer

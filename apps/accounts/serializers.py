@@ -20,10 +20,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """Serializer for Django's built-in User model.
+    """Serializer for Django's built-in User model (admin view).
 
-    Includes nested profile data (read-only) alongside standard user fields
-    such as username, email, and name.
+    Includes nested profile data (read-only) alongside all standard user fields
+    including email.
     """
 
     profile = ProfileSerializer(read_only=True)
@@ -31,3 +31,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'profile']
+
+
+class UserPublicSerializer(serializers.ModelSerializer):
+    """Serializer for non-admin users — hides email for privacy."""
+
+    profile = ProfileSerializer(read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'profile']

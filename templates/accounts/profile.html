@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load accounts_tags %}
 
 {% block title %}Edit Profile — AuthProfile{% endblock %}
 
 {% block content %}
 
 <a href="{% url 'accounts:dashboard' %}" class="back-link mb-4 d-inline-flex">
-    <i class="bi bi-arrow-left"></i> Back to Dashboard
+    <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Dashboard
 </a>
 
 <div class="row g-4 mt-1">
@@ -14,34 +15,38 @@
     <div class="col-lg-4">
         <div class="card-custom no-lift">
             <div class="card-body text-center">
-                <div class="profile-avatar mx-auto mb-3" style="width:80px;height:80px;font-size:2rem;">
-                    {{ user.first_name|first|default:user.username|first|upper }}
-                </div>
+                {% if user.profile.avatar_url %}
+                    <img src="{{ user.profile.avatar_url }}" alt="{{ user.username }}" class="profile-avatar-img mx-auto mb-3" style="width:80px;height:80px;">
+                {% else %}
+                    <div class="profile-avatar mx-auto mb-3" style="width:80px;height:80px;font-size:2rem;">
+                        {{ user|avatar_initial }}
+                    </div>
+                {% endif %}
                 <h5 class="mb-1">{{ user.get_full_name|default:user.username }}</h5>
-                <p style="color:var(--color-text-mute);font-size:0.875rem;margin-bottom:1.25rem;">
+                <p class="text-muted-custom">
                     @{{ user.username }}
                 </p>
 
                 <div class="text-start">
                     <div class="detail-row">
-                        <span class="detail-icon"><i class="bi bi-envelope"></i></span>
+                        <span class="detail-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
                         <span class="detail-label">Email</span>
-                        <span class="detail-value">{{ user.email|default:"—" }}</span>
+                        <span class="detail-value">{{ user.email|default:"Not set" }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-icon"><i class="bi bi-geo-alt"></i></span>
+                        <span class="detail-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
                         <span class="detail-label">Location</span>
-                        <span class="detail-value">{{ user.profile.location|default:"—" }}</span>
+                        <span class="detail-value">{{ user.profile.location|default:"Not set" }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-icon"><i class="bi bi-telephone"></i></span>
+                        <span class="detail-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
                         <span class="detail-label">Phone</span>
-                        <span class="detail-value">{{ user.profile.phone|default:"—" }}</span>
+                        <span class="detail-value">{{ user.profile.phone|default:"Not set" }}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-icon"><i class="bi bi-chat-text"></i></span>
+                        <span class="detail-icon"><i class="bi bi-chat-text" aria-hidden="true"></i></span>
                         <span class="detail-label">Bio</span>
-                        <span class="detail-value">{{ user.profile.bio|default:"—"|truncatewords:12 }}</span>
+                        <span class="detail-value">{{ user.profile.bio|default:"Not set"|truncatewords:12 }}</span>
                     </div>
                 </div>
             </div>
@@ -53,7 +58,7 @@
         <div class="card-custom no-lift">
             <div class="card-body">
                 <div class="section-header">
-                    <h5><i class="bi bi-pencil-square"></i> Edit Profile</h5>
+                    <h5><i class="bi bi-pencil-square" aria-hidden="true"></i> Edit Profile</h5>
                     <span class="line"></span>
                 </div>
 
@@ -61,21 +66,21 @@
                     {% csrf_token %}
 
                     <div class="form-section-title">
-                        <i class="bi bi-person"></i> Account Information
+                        <i class="bi bi-person" aria-hidden="true"></i> Account Information
                     </div>
                     {% bootstrap_form user_form %}
 
                     <div class="form-section-title mt-4">
-                        <i class="bi bi-card-text"></i> Profile Details
+                        <i class="bi bi-card-text" aria-hidden="true"></i> Profile Details
                     </div>
                     {% bootstrap_form profile_form %}
 
                     <div class="d-grid gap-2 mt-4">
                         <button type="submit" class="btn btn-accent">
-                            <i class="bi bi-check-lg"></i> Save Changes
+                            <i class="bi bi-check-lg" aria-hidden="true"></i> Save Changes
                         </button>
                         <a href="{% url 'accounts:password_change' %}" class="btn btn-ghost">
-                            <i class="bi bi-key"></i> Change Password
+                            <i class="bi bi-key" aria-hidden="true"></i> Change Password
                         </a>
                     </div>
                 </form>
